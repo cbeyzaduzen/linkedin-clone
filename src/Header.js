@@ -30,7 +30,7 @@ function Header() {
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs"></HeaderOption>
         <HeaderOption Icon={ChatIcon} title="Messaging"></HeaderOption>
         <HeaderOption Icon={NotificationsIcon} title="Notifications"></HeaderOption>
-        <HeaderOption avatar="file:///C:/Users/Cemile%20Beyza/Desktop/8741624_stock-vector-latina-mexican-woman-avatar.jpg" title="me"></HeaderOption>
+        <HeaderOption avatar="https://img3.stockfresh.com/files/k/kakigori/m/38/8741624_stock-vector-latina-mexican-woman-avatar.jpg" title="me"></HeaderOption>
       </div>
     </div>
   );
