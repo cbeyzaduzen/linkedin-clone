@@ -4,12 +4,22 @@ import SearchIcon from "@material-ui/icons/Search";
 import HeaderOption from "./HeaderOption";
 import HomeIcon from "@material-ui/icons/Home";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
-import ChatIcon from '@material-ui/icons/Chat';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-
+import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
+import ChatIcon from "@material-ui/icons/Chat";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import { useDispatch } from "react-redux";
+import { auth } from "./firebase";
+import { logout, selectUser } from "./features/userSlice";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const dispatch = useDispatch();
+
+  const logoutOfApp = () => {
+    dispatch(logout());
+    auth.signOut();
+  };
+
   return (
     <div className="header">
       <div className="header_left">
@@ -20,17 +30,27 @@ function Header() {
 
         <div className="header_search">
           <SearchIcon />
-          <input type="text"></input>
+          <input placeholder="Search" type="text"></input>
         </div>
       </div>
 
       <div className="header_right">
         <HeaderOption Icon={HomeIcon} title="Home"></HeaderOption>
-        <HeaderOption Icon={SupervisorAccountIcon} title="My Network"></HeaderOption>
+        <HeaderOption
+          Icon={SupervisorAccountIcon}
+          title="My Network"
+        ></HeaderOption>
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs"></HeaderOption>
         <HeaderOption Icon={ChatIcon} title="Messaging"></HeaderOption>
-        <HeaderOption Icon={NotificationsIcon} title="Notifications"></HeaderOption>
-        <HeaderOption avatar="https://img3.stockfresh.com/files/k/kakigori/m/38/8741624_stock-vector-latina-mexican-woman-avatar.jpg" title="me"></HeaderOption>
+        <HeaderOption
+          Icon={NotificationsIcon}
+          title="Notifications"
+        ></HeaderOption>
+        <HeaderOption
+          avatar={true}
+          title="me"
+          onClick={logoutOfApp}
+        ></HeaderOption>
       </div>
     </div>
   );
